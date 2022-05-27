@@ -1,0 +1,39 @@
+<mat-progress-bar
+  *ngIf="isLoading"
+  mode="indeterminate"
+  [color]="red"
+></mat-progress-bar>
+<app-go-back [path]="'films'"></app-go-back>
+<h1>{{ film?.title }}</h1>
+<div class="row">
+  <div class="col-sm mr-0">
+    <h3>Film information</h3>
+    <div>Director: {{ film?.director }}</div>
+    <div>Producer(s): {{ film?.producer }}</div>
+    <div>Release Date: {{ film?.release_date | date }}</div>
+  </div>
+  <div class="col-lg">
+    <h3>Opening crawl</h3>
+    {{ film?.opening_crawl }}
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <app-characters-simple-list
+      *ngIf="film?.charactersUrlParam"
+      [characterUrlParams]="film.charactersUrlParam"
+    ></app-characters-simple-list>
+  </div>
+  <div class="col">
+    <app-species-simple-list
+      *ngIf="film?.speciesUrlParam"
+      [specieUrlParams]="film.speciesUrlParam"
+    ></app-species-simple-list>
+  </div>
+  <div class="col">
+    <app-planets-simple-list
+      *ngIf="film?.planetsUrlParam"
+      [planetUrlParams]="film.planetsUrlParam"
+    ></app-planets-simple-list>
+  </div>
+</div>

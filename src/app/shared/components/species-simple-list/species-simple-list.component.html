@@ -1,0 +1,6 @@
+<h3>Species</h3>
+<ul>
+  <li *ngFor="let specie of species">
+    <a [routerLink]="['/species/' + specie.urlParam]">{{ specie.name }}</a>
+  </li>
+</ul>

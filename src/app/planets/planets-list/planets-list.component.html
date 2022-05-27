@@ -1,0 +1,32 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-go-back [path]="''"></app-go-back>
+<h2>Planets</h2>
+<div class="row">
+  <mat-card
+    *ngIf="hasPrevious"
+    (click)="loadPreviouPage()"
+    class="col m-2 next-card"
+    ><mat-icon>navigate_before</mat-icon></mat-card
+  >
+  <mat-card *ngFor="let planet of planets" class="col m-2 planet-card">
+    <mat-card-title>{{ planet.name }}</mat-card-title>
+    <mat-card-content>
+      <ul class="attributes-list">
+        <li>
+          <span class="attribute">Population</span>: {{ planet.population }}
+        </li>
+        <li><span class="attribute">Gravity</span>: {{ planet.gravity }}</li>
+        <li><span class="attribute">Diameter</span>: {{ planet.diameter }}</li>
+        <li><span class="attribute">Terrain</span>: {{ planet.terrain }}</li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button [routerLink]="[planet.urlParam]" mat-button>
+        Details <mat-icon>visibility</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="hasNext" (click)="loadNextPage()" class="col m-2 next-card"
+    ><mat-icon>navigate_next</mat-icon></mat-card
+  >
+</div>

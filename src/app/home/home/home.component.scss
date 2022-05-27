@@ -1,0 +1,30 @@
+.home-card {
+  width: fit-content;
+  max-width: 430px;
+  min-width: 430px;
+  display: block;
+  text-align: center;
+  position: relative;
+
+  .image_wrapper {
+    width: 430px;
+    height: 259.61px;
+
+    .image {
+      border-radius: 10px;
+
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  h1 {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.home-card :hover {
+  cursor: pointer;
+}

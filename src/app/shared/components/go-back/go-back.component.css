@@ -1,0 +1,11 @@
+.go-back {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+
+  margin-top: 15px;
+}
+
+.go-back:hover {
+  cursor: pointer;
+}

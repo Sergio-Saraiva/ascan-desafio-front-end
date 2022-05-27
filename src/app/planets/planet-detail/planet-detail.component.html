@@ -1,0 +1,33 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-go-back [path]="'planets'"></app-go-back>
+<h1>{{ planet?.name }}</h1>
+<div class="row">
+  <div class="col-sm mr-0">
+    <h3>Planet information</h3>
+    <div>Climate: {{ planet?.climate }}</div>
+    <div>Diameter: {{ planet?.diameter }}</div>
+    <div>Gravity: {{ planet?.gravity }}</div>
+    <div>Orbital Period: {{ planet?.orbital_period }}</div>
+  </div>
+  <div class="col-lg">
+    <h3>&nbsp;</h3>
+    <div>Population: {{ planet?.population }}</div>
+    <div>Rotation Period: {{ planet?.rotation_period }}</div>
+    <div>Surface Water: {{ planet?.surface_water }}</div>
+    <div>Terrain: {{ planet?.terrain }}</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <app-characters-simple-list
+      *ngIf="planet?.charactersUrlParam"
+      [characterUrlParams]="planet.charactersUrlParam"
+    ></app-characters-simple-list>
+  </div>
+  <div class="col">
+    <app-films-simple-list
+      *ngIf="planet?.filmsUrlParam"
+      [filmUrlParams]="planet.filmsUrlParam"
+    ></app-films-simple-list>
+  </div>
+</div>

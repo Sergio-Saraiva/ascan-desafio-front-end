@@ -1,0 +1,6 @@
+<h3>Planets</h3>
+<ul>
+  <li *ngFor="let planet of planets">
+    <a [routerLink]="['/planets/' + planet.urlParam]">{{ planet.name }}</a>
+  </li>
+</ul>

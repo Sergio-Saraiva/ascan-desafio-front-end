@@ -1,0 +1,23 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-go-back [path]="''"></app-go-back>
+<h2>Films</h2>
+<div class="row">
+  <mat-card *ngFor="let film of films" class="col m-2 movie-card">
+    <mat-card-title>{{ film.title }}</mat-card-title>
+    <mat-card-content>
+      <ul class="attributes-list">
+        <li><span class="attribute">Director</span>: {{ film.director }}</li>
+        <li><span class="attribute">Producer(s)</span>: {{ film.producer }}</li>
+        <li>
+          <span class="attribute">Release date</span>:
+          {{ film.release_date | date }}
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button [routerLink]="[film.urlParam]" mat-button>
+        Details <mat-icon>visibility</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,32 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-go-back [path]="''"></app-go-back>
+<h2>Characters</h2>
+<div class="row">
+  <mat-card
+    *ngIf="hasPrevious"
+    (click)="loadPreviouPage()"
+    class="col m-2 next-card"
+    ><mat-icon>navigate_before</mat-icon></mat-card
+  >
+
+  <mat-card *ngFor="let character of characters" class="col m-2 character-card">
+    <mat-card-title>{{ character?.name }}</mat-card-title>
+    <mat-card-content>
+      <ul class="attributes-list">
+        <li><span class="attribute">Height</span> {{ character?.height }}</li>
+        <li><span class="attribute">Gender</span>: {{ character?.gender }}</li>
+        <li>
+          <span class="attribute">Birth year</span>: {{ character?.birth_year }}
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button [routerLink]="[character?.urlParam]" mat-button>
+        Details <mat-icon>visibility</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="hasNext" (click)="loadNextPage()" class="col m-2 next-card"
+    ><mat-icon>navigate_next</mat-icon></mat-card
+  >
+</div>
