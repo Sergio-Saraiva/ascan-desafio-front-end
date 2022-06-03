@@ -54,11 +54,13 @@ export class SpeciesListComponent implements OnInit {
 
   loadNextPage() {
     let nextCallPage = this.next.match(/(?<=\?).*/)[0];
+    window.scrollTo(0, 0);
     this.getAllSpecies(nextCallPage);
   }
 
-  loadPreviouPage() {
+  loadPreviousPage() {
     let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
+    window.scrollTo(0, 0);
     this.getAllSpecies(previousCallPage);
   }
 }

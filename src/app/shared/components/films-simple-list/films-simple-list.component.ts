@@ -11,6 +11,7 @@ import { UrlParamService } from '../../services/urlparam.service';
 export class FilmsSimpleListComponent implements OnInit {
   @Input() filmUrlParams: string[];
   films: Film[] = [];
+  isLoading: boolean = true;
   constructor(
     private filmService: FilmsService,
     private urlParamService: UrlParamService
@@ -18,10 +19,16 @@ export class FilmsSimpleListComponent implements OnInit {
 
   ngOnInit(): void {
     this.filmUrlParams.map((c) => {
-      this.filmService.getById(+c).subscribe((data) => {
-        this.urlParamService.fillFilmUrlParam(data);
-        this.films.push(data);
-      });
+      this.filmService.getById(+c).subscribe(
+        (data) => {
+          this.urlParamService.fillFilmUrlParam(data);
+          this.films.push(data);
+        },
+        () => {},
+        () => {
+          this.isLoading = false;
+        }
+      );
     });
   }
 }

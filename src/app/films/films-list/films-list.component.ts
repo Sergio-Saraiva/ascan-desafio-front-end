@@ -11,6 +11,10 @@ import { UrlParamService } from 'src/app/shared/services/urlparam.service';
 export class FilmsListComponent implements OnInit {
   films: Film[] = [];
   isLoading: boolean = true;
+  previous: string;
+  hasPrevious: boolean = false;
+  next: string;
+  hasNext: boolean = false;
 
   constructor(
     private filmsService: FilmsService,
@@ -18,16 +22,46 @@ export class FilmsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAllFilms(null);
+  }
+
+  private getAllFilms(query?: string) {
     this.filmsService.getAll().subscribe(
       (data) => {
         this.isLoading = true;
         data.results.map((f) => this.urlParamService.fillFilmUrlParam(f));
         this.films = data.results;
+        if (data.previous !== null) {
+          this.hasPrevious = true;
+          this.previous = data.previous;
+        } else {
+          this.hasPrevious = false;
+          this.previous = null;
+        }
+        if (data.next !== null) {
+          this.hasNext = true;
+          this.next = data.next;
+        } else {
+          this.hasNext = false;
+          this.next = null;
+        }
       },
       (_) => {},
       () => {
         this.isLoading = false;
       }
     );
+  }
+
+  loadNextPage() {
+    let nextCallPage = this.next.match(/(?<=\?).*/)[0];
+    window.scrollTo(0, 0);
+    this.getAllFilms(nextCallPage);
+  }
+
+  loadPreviousPage() {
+    let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
+    window.scrollTo(0, 0);
+    this.getAllFilms(previousCallPage);
   }
 }

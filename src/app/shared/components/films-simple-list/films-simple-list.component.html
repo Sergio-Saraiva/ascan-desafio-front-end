@@ -1,6 +1,10 @@
-<h3>Films</h3>
-<ul>
+<app-simple-list-wrapper
+  [title]="'Films'"
+  [isLoading]="isLoading"
+  [length]="films.length"
+  [name]="'films'"
+>
   <li *ngFor="let film of films">
     <a [routerLink]="['/films/' + film.urlParam]">{{ film.title }}</a>
   </li>
-</ul>
+</app-simple-list-wrapper>

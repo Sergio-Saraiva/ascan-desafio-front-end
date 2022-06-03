@@ -1,6 +1,10 @@
-<h3>Species</h3>
-<ul>
+<app-simple-list-wrapper
+  [title]="'Species'"
+  [isLoading]="isLoading"
+  [length]="species.length"
+  [name]="'species'"
+>
   <li *ngFor="let specie of species">
     <a [routerLink]="['/species/' + specie.urlParam]">{{ specie.name }}</a>
   </li>
-</ul>
+</app-simple-list-wrapper>

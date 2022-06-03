@@ -1,13 +1,12 @@
-<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
-<app-go-back [path]="''"></app-go-back>
-<h2>Species</h2>
-<div class="row">
-  <mat-card
-    *ngIf="hasPrevious"
-    (click)="loadPreviouPage()"
-    class="col m-2 next-card"
-    ><mat-icon>navigate_before</mat-icon></mat-card
-  >
+<app-list-wrapper
+  [isLoading]="isLoading"
+  [title]="'Species'"
+  [path]="''"
+  [hasPrevious]="hasPrevious"
+  [hasNext]="hasNext"
+  (callNextPage)="loadNextPage()"
+  (callPreviousPage)="loadPreviousPage()"
+>
   <mat-card *ngFor="let specie of species" class="col m-2 specie-card">
     <mat-card-title>{{ specie?.name }}</mat-card-title>
     <mat-card-content>
@@ -28,7 +27,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
-  <mat-card *ngIf="hasNext" (click)="loadNextPage()" class="col m-2 next-card"
-    ><mat-icon>navigate_next</mat-icon></mat-card
-  >
-</div>
+</app-list-wrapper>

@@ -1,0 +1,29 @@
+.next-card {
+  max-width: 430px;
+  min-width: 430px;
+  background-color: #000;
+  color: #ffee58;
+  font-family: "Changa", sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid #fbe2004d;
+  cursor: pointer;
+}
+
+.next-card:hover {
+  transform: scale(1.03);
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #ffee58;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #000;
+}
+
+::ng-deep .mat-progress-bar {
+  border-radius: 2px;
+}

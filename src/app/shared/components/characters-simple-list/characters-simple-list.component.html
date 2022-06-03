@@ -1,8 +1,12 @@
-<h3>Characters</h3>
-<ul>
+<app-simple-list-wrapper
+  [title]="'Films'"
+  [isLoading]="isLoading"
+  [length]="characters.length"
+  [name]="'characters'"
+>
   <li *ngFor="let character of characters">
     <a [routerLink]="['/characters/' + character.urlParam]">{{
       character.name
     }}</a>
   </li>
-</ul>
+</app-simple-list-wrapper>

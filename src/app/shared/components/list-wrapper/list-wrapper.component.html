@@ -1,0 +1,18 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-go-back [path]="path"></app-go-back>
+<h2>{{ title }}</h2>
+<div class="row">
+  <mat-card
+    *ngIf="hasPrevious"
+    (click)="emitCallPreviousPage()"
+    class="col m-2 next-card"
+    ><mat-icon>navigate_before</mat-icon></mat-card
+  >
+  <ng-content></ng-content>
+  <mat-card
+    *ngIf="hasNext"
+    (click)="emitCallNextPage()"
+    class="col m-2 next-card"
+    ><mat-icon>navigate_next</mat-icon></mat-card
+  >
+</div>

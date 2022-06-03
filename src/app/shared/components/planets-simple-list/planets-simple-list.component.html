@@ -1,6 +1,10 @@
-<h3>Planets</h3>
-<ul>
+<app-simple-list-wrapper
+  [title]="'Planets'"
+  [isLoading]="isLoading"
+  [length]="planets.length"
+  [name]="'planets'"
+>
   <li *ngFor="let planet of planets">
     <a [routerLink]="['/planets/' + planet.urlParam]">{{ planet.name }}</a>
   </li>
-</ul>
+</app-simple-list-wrapper>

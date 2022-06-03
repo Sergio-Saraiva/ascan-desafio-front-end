@@ -1,38 +1,41 @@
-<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
-<app-go-back [path]="'characters'"></app-go-back>
-<h1>{{ character?.name }}</h1>
-<div class="row">
-  <div class="col-sm mr-0">
-    <h3>Character information</h3>
-    <div>Height: {{ character?.height }}</div>
-    <div>Mass: {{ character?.mass }}</div>
-    <div>Hair color: {{ character?.hair_color }}</div>
-    <div>Eye color: {{ character?.eye_color }}</div>
-  </div>
-  <div class="col-lg">
-    <h3>&nbsp;</h3>
-    <div>Skin color: {{ character?.skin_color }}</div>
-    <div>Birth year: {{ character?.birth_year }}</div>
-    <div>Gender: {{ character?.gender }}</div>
-    <div>
-      Homeworld:
-      <a [routerLink]="['/planets/' + character.homeworld]">{{
-        character?.homeworld_name
-      }}</a>
+<app-detail-wrapper
+  [title]="character?.name"
+  [isLoading]="isLoading"
+  [path]="'characters'"
+>
+  <div class="row" detail-main-content>
+    <div class="col-sm mr-0">
+      <h3>Character information</h3>
+      <div>Height: {{ character?.height }}</div>
+      <div>Mass: {{ character?.mass }}</div>
+      <div>Hair color: {{ character?.hair_color }}</div>
+      <div>Eye color: {{ character?.eye_color }}</div>
+    </div>
+    <div class="col-lg">
+      <h3>&nbsp;</h3>
+      <div>Skin color: {{ character?.skin_color }}</div>
+      <div>Birth year: {{ character?.birth_year }}</div>
+      <div>Gender: {{ character?.gender }}</div>
+      <div>
+        Homeworld:
+        <a [routerLink]="['/planets/' + character?.homeworld]">{{
+          character?.homeworld_name
+        }}</a>
+      </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col">
-    <app-species-simple-list
-      *ngIf="character?.speciesUrlParam"
-      [characterUrlParams]="character.speciesUrlParam"
-    ></app-species-simple-list>
+  <div class="row" detail-related-content>
+    <div class="col">
+      <app-species-simple-list
+        *ngIf="character?.speciesUrlParam"
+        [specieUrlParams]="character.speciesUrlParam"
+      ></app-species-simple-list>
+    </div>
+    <div class="col">
+      <app-films-simple-list
+        *ngIf="character?.filmsUrlParam"
+        [filmUrlParams]="character.filmsUrlParam"
+      ></app-films-simple-list>
+    </div>
   </div>
-  <div class="col">
-    <app-films-simple-list
-      *ngIf="character?.filmsUrlParam"
-      [filmUrlParams]="character?.filmsUrlParam"
-    ></app-films-simple-list>
-  </div>
-</div>
+</app-detail-wrapper>

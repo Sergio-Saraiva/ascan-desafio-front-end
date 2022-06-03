@@ -1,13 +1,12 @@
-<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
-<app-go-back [path]="''"></app-go-back>
-<h2>Planets</h2>
-<div class="row">
-  <mat-card
-    *ngIf="hasPrevious"
-    (click)="loadPreviouPage()"
-    class="col m-2 next-card"
-    ><mat-icon>navigate_before</mat-icon></mat-card
-  >
+<app-list-wrapper
+  [isLoading]="isLoading"
+  [title]="'Planets'"
+  [path]="''"
+  [hasPrevious]="hasPrevious"
+  [hasNext]="hasNext"
+  (callNextPage)="loadNextPage()"
+  (callPreviousPage)="loadPreviousPage()"
+>
   <mat-card *ngFor="let planet of planets" class="col m-2 planet-card">
     <mat-card-title>{{ planet.name }}</mat-card-title>
     <mat-card-content>
@@ -26,7 +25,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
-  <mat-card *ngIf="hasNext" (click)="loadNextPage()" class="col m-2 next-card"
-    ><mat-icon>navigate_next</mat-icon></mat-card
-  >
-</div>
+</app-list-wrapper>

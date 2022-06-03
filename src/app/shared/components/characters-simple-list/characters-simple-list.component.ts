@@ -11,6 +11,7 @@ import { UrlParamService } from '../../services/urlparam.service';
 export class CharactersSimpleListComponent implements OnInit {
   @Input() characterUrlParams: string[];
   characters: Character[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private characterService: CharactersService,
@@ -19,10 +20,16 @@ export class CharactersSimpleListComponent implements OnInit {
 
   ngOnInit(): void {
     this.characterUrlParams.map((c) => {
-      this.characterService.getById(+c).subscribe((data) => {
-        this.urlParamService.fillCharacterUrlParam(data);
-        this.characters.push(data);
-      });
+      this.characterService.getById(+c).subscribe(
+        (data) => {
+          this.urlParamService.fillCharacterUrlParam(data);
+          this.characters.push(data);
+        },
+        () => {},
+        () => {
+          this.isLoading = false;
+        }
+      );
     });
   }
 }

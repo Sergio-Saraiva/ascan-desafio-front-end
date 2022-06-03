@@ -53,11 +53,13 @@ export class PlanetsListComponent implements OnInit {
 
   loadNextPage() {
     let nextCallPage = this.next.match(/(?<=\?).*/)[0];
+    window.scrollTo(0, 0);
     this.getAllPlanets(nextCallPage);
   }
 
-  loadPreviouPage() {
+  loadPreviousPage() {
     let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
+    window.scrollTo(0, 0);
     this.getAllPlanets(previousCallPage);
   }
 }

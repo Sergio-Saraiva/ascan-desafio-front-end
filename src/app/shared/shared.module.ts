@@ -10,6 +10,9 @@ import { CharactersSimpleListComponent } from './components/characters-simple-li
 import { SpeciesSimpleListComponent } from './components/species-simple-list/species-simple-list.component';
 import { PlanetsSimpleListComponent } from './components/planets-simple-list/planets-simple-list.component';
 import { FilmsSimpleListComponent } from './components/films-simple-list/films-simple-list.component';
+import { ListWrapperComponent } from './components/list-wrapper/list-wrapper.component';
+import { DetailWrapperComponent } from './components/detail-wrapper/detail-wrapper.component';
+import { SimpleListWrapperComponent } from './components/simple-list-wrapper/simple-list-wrapper.component';
 
 @NgModule({
   imports: [
@@ -20,7 +23,17 @@ import { FilmsSimpleListComponent } from './components/films-simple-list/films-s
     ReactiveFormsModule,
     FormsModule,
   ],
-  declarations: [...SharedDeclaredModules, GoBackComponent, CharactersSimpleListComponent, SpeciesSimpleListComponent, PlanetsSimpleListComponent, FilmsSimpleListComponent],
+  declarations: [
+    ...SharedDeclaredModules,
+    GoBackComponent,
+    CharactersSimpleListComponent,
+    SpeciesSimpleListComponent,
+    PlanetsSimpleListComponent,
+    FilmsSimpleListComponent,
+    ListWrapperComponent,
+    DetailWrapperComponent,
+    SimpleListWrapperComponent,
+  ],
   exports: [
     CustomMaterialModule,
     ...SharedImportedModules,

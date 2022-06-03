@@ -58,7 +58,7 @@ export class CharactersListComponent implements OnInit {
     this.getAllCharacters(nextCallPage);
   }
 
-  loadPreviouPage() {
+  loadPreviousPage() {
     let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
     window.scrollTo(0, 0);
     this.getAllCharacters(previousCallPage);

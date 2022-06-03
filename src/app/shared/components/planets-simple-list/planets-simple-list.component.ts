@@ -11,6 +11,7 @@ import { UrlParamService } from '../../services/urlparam.service';
 export class PlanetsSimpleListComponent implements OnInit {
   @Input() planetUrlParams: string[];
   planets: Planet[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private planetService: PlanetsService,
@@ -19,10 +20,16 @@ export class PlanetsSimpleListComponent implements OnInit {
 
   ngOnInit(): void {
     this.planetUrlParams.map((p) => {
-      this.planetService.getById(+p).subscribe((data) => {
-        this.urlParamService.fillPlanetUrlParam(data);
-        this.planets.push(data);
-      });
+      this.planetService.getById(+p).subscribe(
+        (data) => {
+          this.urlParamService.fillPlanetUrlParam(data);
+          this.planets.push(data);
+        },
+        () => {},
+        () => {
+          this.isLoading = false;
+        }
+      );
     });
   }
 }
