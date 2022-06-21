@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getPageQueryHelper } from 'src/app/shared/helper/page-query-helper';
 import { Film } from 'src/app/shared/models/film';
 import { FilmsService } from 'src/app/shared/services/films.service';
 import { UrlParamService } from 'src/app/shared/services/urlparam.service';
@@ -54,13 +55,13 @@ export class FilmsListComponent implements OnInit {
   }
 
   loadNextPage() {
-    let nextCallPage = this.next.match(/(?<=\?).*/)[0];
+    let nextCallPage = getPageQueryHelper(this.next);
     window.scrollTo(0, 0);
     this.getAllFilms(nextCallPage);
   }
 
   loadPreviousPage() {
-    let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
+    let previousCallPage = getPageQueryHelper(this.previous);
     window.scrollTo(0, 0);
     this.getAllFilms(previousCallPage);
   }

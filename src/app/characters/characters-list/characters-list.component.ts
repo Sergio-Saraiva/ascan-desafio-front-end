@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getPageQueryHelper } from 'src/app/shared/helper/page-query-helper';
 import { Character } from 'src/app/shared/models/character';
 import { CharactersService } from 'src/app/shared/services/characters.service';
 import { UrlParamService } from 'src/app/shared/services/urlparam.service';
@@ -53,13 +54,13 @@ export class CharactersListComponent implements OnInit {
   }
 
   loadNextPage() {
-    let nextCallPage = this.next.match(/(?<=\?).*/)[0];
+    let nextCallPage = getPageQueryHelper(this.next);
     window.scrollTo(0, 0);
     this.getAllCharacters(nextCallPage);
   }
 
   loadPreviousPage() {
-    let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
+    let previousCallPage = getPageQueryHelper(this.previous);
     window.scrollTo(0, 0);
     this.getAllCharacters(previousCallPage);
   }

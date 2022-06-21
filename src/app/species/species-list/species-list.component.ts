@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getPageQueryHelper } from 'src/app/shared/helper/page-query-helper';
 import { Specie } from 'src/app/shared/models/specie';
 import { SpeciesService } from 'src/app/shared/services/species.service';
 import { UrlParamService } from 'src/app/shared/services/urlparam.service';
@@ -53,13 +54,13 @@ export class SpeciesListComponent implements OnInit {
   }
 
   loadNextPage() {
-    let nextCallPage = this.next.match(/(?<=\?).*/)[0];
+    let nextCallPage = getPageQueryHelper(this.next);
     window.scrollTo(0, 0);
     this.getAllSpecies(nextCallPage);
   }
 
   loadPreviousPage() {
-    let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
+    let previousCallPage = getPageQueryHelper(this.previous);
     window.scrollTo(0, 0);
     this.getAllSpecies(previousCallPage);
   }

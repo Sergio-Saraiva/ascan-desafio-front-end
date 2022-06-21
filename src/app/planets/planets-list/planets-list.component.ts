@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getPageQueryHelper } from 'src/app/shared/helper/page-query-helper';
 import { Planet } from 'src/app/shared/models/planet';
 import { PlanetsService } from 'src/app/shared/services/planets.service';
 import { UrlParamService } from 'src/app/shared/services/urlparam.service';
@@ -52,13 +53,13 @@ export class PlanetsListComponent implements OnInit {
   }
 
   loadNextPage() {
-    let nextCallPage = this.next.match(/(?<=\?).*/)[0];
+    let nextCallPage = getPageQueryHelper(this.next);
     window.scrollTo(0, 0);
     this.getAllPlanets(nextCallPage);
   }
 
   loadPreviousPage() {
-    let previousCallPage = this.previous.match(/(?<=\?).*/)[0];
+    let previousCallPage = getPageQueryHelper(this.previous);
     window.scrollTo(0, 0);
     this.getAllPlanets(previousCallPage);
   }
