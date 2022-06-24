@@ -8,6 +8,8 @@ export class ServiceBaseGet<S> extends ServiceBase {
       query = '';
     }
 
+    console.log(query);
+
     return this.url$.pipe(
       switchMap((url) =>
         this.httpClient.get<APIResponseInterface<S>>(`${url}/?${query}`)

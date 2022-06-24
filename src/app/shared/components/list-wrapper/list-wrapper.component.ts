@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-list-wrapper',
@@ -6,6 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./list-wrapper.component.css'],
 })
 export class ListWrapperComponent implements OnInit {
+  formGroup: FormGroup;
+
   @Input() isLoading: boolean;
   @Input() title: string;
   @Input() path: string;
@@ -14,11 +17,18 @@ export class ListWrapperComponent implements OnInit {
 
   @Output() callPreviousPage = new EventEmitter();
   @Output() callNextPage = new EventEmitter();
-  constructor() {}
+  @Output() searchValue = new EventEmitter();
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.formGroup = this.formBuilder.group({
+      search: new FormControl(''),
+    });
+  }
 
-  loadPreviousPage() {}
+  formSubmit() {
+    this.searchValue.emit(this.formGroup.value);
+  }
 
   emitCallPreviousPage() {
     this.callPreviousPage.emit();

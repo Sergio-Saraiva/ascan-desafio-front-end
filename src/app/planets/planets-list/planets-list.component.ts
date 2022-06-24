@@ -63,4 +63,14 @@ export class PlanetsListComponent implements OnInit {
     window.scrollTo(0, 0);
     this.getAllPlanets(previousCallPage);
   }
+
+  searchFilter(value) {
+    let search = value.search;
+    if (search.trim() !== '') {
+      let query = `search=${search}`;
+      window.scrollTo(0, 0);
+      this.getAllPlanets(query);
+    }
+    this.getAllPlanets();
+  }
 }

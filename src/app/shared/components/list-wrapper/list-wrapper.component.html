@@ -1,6 +1,14 @@
 <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 <app-go-back [path]="path"></app-go-back>
-<h2>{{ title }}</h2>
+<div class="row">
+  <h2 class="col-lg-10">{{ title }}</h2>
+  <form [formGroup]="formGroup" class="col" (submit)="formSubmit()">
+    <mat-form-field
+      ><mat-label>Search</mat-label
+      ><input matInput type="text" formControlName="search"
+    /></mat-form-field>
+  </form>
+</div>
 <div class="row">
   <mat-card
     *ngIf="hasPrevious"
