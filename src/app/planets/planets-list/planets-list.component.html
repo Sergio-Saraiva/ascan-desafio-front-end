@@ -7,6 +7,7 @@
   (callNextPage)="loadNextPage()"
   (callPreviousPage)="loadPreviousPage()"
   (searchValue)="searchFilter($event)"
+  (searchCleared)="clearSearchFilter()"
 >
   <mat-card *ngFor="let planet of planets" class="col m-2 planet-card">
     <mat-card-title>{{ planet.name }}</mat-card-title>

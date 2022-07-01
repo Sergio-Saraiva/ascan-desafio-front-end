@@ -6,6 +6,8 @@
   [hasNext]="hasNext"
   (callNextPage)="loadNextPage()"
   (callPreviousPage)="loadPreviousPage()"
+  (searchValue)="searchFilter($event)"
+  (searchCleared)="clearSearchFilter()"
 >
   <mat-card *ngFor="let specie of species" class="col m-2 specie-card">
     <mat-card-title>{{ specie?.name }}</mat-card-title>

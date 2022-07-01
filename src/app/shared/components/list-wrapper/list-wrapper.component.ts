@@ -18,6 +18,8 @@ export class ListWrapperComponent implements OnInit {
   @Output() callPreviousPage = new EventEmitter();
   @Output() callNextPage = new EventEmitter();
   @Output() searchValue = new EventEmitter();
+  @Output() searchCleared = new EventEmitter();
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -27,7 +29,20 @@ export class ListWrapperComponent implements OnInit {
   }
 
   formSubmit() {
-    this.searchValue.emit(this.formGroup.value);
+    let search = this.formGroup.value.search;
+    if (search.trim() !== '') {
+      window.scrollTo(0, 0);
+      this.searchValue.emit(search);
+    }
+    if (search.trim() === '') {
+      this.clearSearch();
+    }
+  }
+
+  clearSearch() {
+    this.formGroup.controls.search.markAsPristine();
+    this.formGroup.controls.search.setValue('');
+    this.searchCleared.emit();
   }
 
   emitCallPreviousPage() {

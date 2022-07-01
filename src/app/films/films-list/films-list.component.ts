@@ -27,7 +27,7 @@ export class FilmsListComponent implements OnInit {
   }
 
   private getAllFilms(query?: string) {
-    this.filmsService.getAll().subscribe(
+    this.filmsService.getAll(query).subscribe(
       (data) => {
         this.isLoading = true;
         data.results.map((f) => this.urlParamService.fillFilmUrlParam(f));
@@ -64,5 +64,15 @@ export class FilmsListComponent implements OnInit {
     let previousCallPage = getPageQueryHelper(this.previous);
     window.scrollTo(0, 0);
     this.getAllFilms(previousCallPage);
+  }
+
+  searchFilter(search) {
+    let query = `search=${search}`;
+    window.scrollTo(0, 0);
+    this.getAllFilms(query);
+  }
+
+  clearSearchFilter() {
+    this.getAllFilms();
   }
 }

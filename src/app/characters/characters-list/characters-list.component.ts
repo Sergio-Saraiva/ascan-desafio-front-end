@@ -64,4 +64,14 @@ export class CharactersListComponent implements OnInit {
     window.scrollTo(0, 0);
     this.getAllCharacters(previousCallPage);
   }
+
+  searchFilter(search) {
+    let query = `search=${search}`;
+    window.scrollTo(0, 0);
+    this.getAllCharacters(query);
+  }
+
+  clearSearchFilter() {
+    this.getAllCharacters();
+  }
 }

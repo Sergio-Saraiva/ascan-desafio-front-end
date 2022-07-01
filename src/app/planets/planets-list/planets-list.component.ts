@@ -64,13 +64,13 @@ export class PlanetsListComponent implements OnInit {
     this.getAllPlanets(previousCallPage);
   }
 
-  searchFilter(value) {
-    let search = value.search;
-    if (search.trim() !== '') {
-      let query = `search=${search}`;
-      window.scrollTo(0, 0);
-      this.getAllPlanets(query);
-    }
+  searchFilter(search) {
+    let query = `search=${search}`;
+    window.scrollTo(0, 0);
+    this.getAllPlanets(query);
+  }
+
+  clearSearchFilter() {
     this.getAllPlanets();
   }
 }

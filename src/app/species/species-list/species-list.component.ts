@@ -64,4 +64,14 @@ export class SpeciesListComponent implements OnInit {
     window.scrollTo(0, 0);
     this.getAllSpecies(previousCallPage);
   }
+
+  searchFilter(search) {
+    let query = `search=${search}`;
+    window.scrollTo(0, 0);
+    this.getAllSpecies(query);
+  }
+
+  clearSearchFilter() {
+    this.getAllSpecies();
+  }
 }
