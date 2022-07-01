@@ -22,7 +22,7 @@ export class CharactersSimpleListComponent implements OnInit {
     this.characterUrlParams.map((c) => {
       this.characterService.getById(+c).subscribe(
         (data) => {
-          this.urlParamService.fillCharacterUrlParam(data);
+          this.urlParamService.fillSingleUrlParam(data);
           this.characters.push(data);
         },
         () => {},

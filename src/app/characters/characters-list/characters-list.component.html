@@ -9,7 +9,7 @@
   (searchValue)="searchFilter($event)"
   (searchCleared)="clearSearchFilter()"
 >
-  <mat-card *ngFor="let character of characters" class="col m-2 character-card">
+  <mat-card *ngFor="let character of data" class="col m-2 character-card">
     <mat-card-title>{{ character?.name }}</mat-card-title>
     <mat-card-content>
       <ul class="attributes-list">

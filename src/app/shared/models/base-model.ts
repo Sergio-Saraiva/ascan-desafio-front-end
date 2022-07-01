@@ -1,4 +1,5 @@
 export interface BaseModel {
+  url: string;
   urlParam?: string;
   filmsUrlParam?: string[];
   charactersUrlParam?: string[];

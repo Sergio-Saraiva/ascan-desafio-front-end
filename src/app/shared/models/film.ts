@@ -12,5 +12,5 @@ export interface Film extends BaseModel {
   vehicles: any[];
   characters: string[];
   planets: string[];
-  url: string;
+  films?: string[];
 }

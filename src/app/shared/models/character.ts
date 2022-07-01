@@ -17,5 +17,6 @@ export interface Character extends BaseModel {
   species: string[];
   vehicles: string[];
   starships: string[];
-  url: string;
+  residents: string[];
+  people: string[];
 }

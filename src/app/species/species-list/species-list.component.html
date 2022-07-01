@@ -9,7 +9,7 @@
   (searchValue)="searchFilter($event)"
   (searchCleared)="clearSearchFilter()"
 >
-  <mat-card *ngFor="let specie of species" class="col m-2 specie-card">
+  <mat-card *ngFor="let specie of data" class="col m-2 specie-card">
     <mat-card-title>{{ specie?.name }}</mat-card-title>
     <mat-card-content>
       <ul class="attributes-list">

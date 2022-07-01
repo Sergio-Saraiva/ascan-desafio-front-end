@@ -13,6 +13,7 @@ import { FilmsSimpleListComponent } from './components/films-simple-list/films-s
 import { ListWrapperComponent } from './components/list-wrapper/list-wrapper.component';
 import { DetailWrapperComponent } from './components/detail-wrapper/detail-wrapper.component';
 import { SimpleListWrapperComponent } from './components/simple-list-wrapper/simple-list-wrapper.component';
+import { BaseListComponentComponent } from './components/base-list-component/base-list-component.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { SimpleListWrapperComponent } from './components/simple-list-wrapper/sim
     ListWrapperComponent,
     DetailWrapperComponent,
     SimpleListWrapperComponent,
+    BaseListComponentComponent,
   ],
   exports: [
     CustomMaterialModule,

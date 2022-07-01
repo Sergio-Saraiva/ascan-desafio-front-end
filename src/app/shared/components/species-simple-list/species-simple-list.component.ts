@@ -25,7 +25,7 @@ export class SpeciesSimpleListComponent implements OnInit {
       console.log('>>', s);
       this.specieService.getById(+s).subscribe(
         (data) => {
-          this.urlParamService.fillSpecieUrlParam(data);
+          this.urlParamService.fillSingleUrlParam(data);
           this.species.push(data);
         },
         () => {},

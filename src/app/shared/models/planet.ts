@@ -14,5 +14,4 @@ export interface Planet extends BaseModel {
 
   films: string[];
   residents: string[];
-  url: string;
 }

@@ -3,6 +3,7 @@ import { Character } from '../models/character';
 import { Film } from '../models/film';
 import { Planet } from '../models/planet';
 import { Specie } from '../models/specie';
+import { BaseModel } from '../models/base-model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,20 +15,8 @@ export class UrlParamService {
     if (url !== undefined && url !== null) return url.match(/\d+/g)[0];
   }
 
-  fillFilmUrlParam(film: Film) {
-    film.urlParam = this.urlParamExtractorHelper(film.url);
-  }
-
-  fillCharacterUrlParam(character: Character) {
-    character.urlParam = this.urlParamExtractorHelper(character.url);
-  }
-
-  fillSpecieUrlParam(specie: Specie) {
-    specie.urlParam = this.urlParamExtractorHelper(specie.url);
-  }
-
-  fillPlanetUrlParam(planet: Planet) {
-    planet.urlParam = this.urlParamExtractorHelper(planet.url);
+  fillSingleUrlParam(object: any) {
+    object.urlParam = this.urlParamExtractorHelper(object.url);
   }
 
   fillFilmsUrlParam(object) {

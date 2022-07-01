@@ -22,7 +22,7 @@ export class PlanetsSimpleListComponent implements OnInit {
     this.planetUrlParams.map((p) => {
       this.planetService.getById(+p).subscribe(
         (data) => {
-          this.urlParamService.fillPlanetUrlParam(data);
+          this.urlParamService.fillSingleUrlParam(data);
           this.planets.push(data);
         },
         () => {},

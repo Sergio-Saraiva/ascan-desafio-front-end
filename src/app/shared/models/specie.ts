@@ -15,5 +15,4 @@ export interface Specie extends BaseModel {
 
   people: string[];
   films: string[];
-  url: string;
 }

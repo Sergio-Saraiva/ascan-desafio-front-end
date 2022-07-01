@@ -21,7 +21,7 @@ export class FilmsSimpleListComponent implements OnInit {
     this.filmUrlParams.map((c) => {
       this.filmService.getById(+c).subscribe(
         (data) => {
-          this.urlParamService.fillFilmUrlParam(data);
+          this.urlParamService.fillSingleUrlParam(data);
           this.films.push(data);
         },
         () => {},

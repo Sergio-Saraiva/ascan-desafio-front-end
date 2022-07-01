@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getPageQueryHelper } from 'src/app/shared/helper/page-query-helper';
+import { BaseListComponentComponent } from 'src/app/shared/components/base-list-component/base-list-component.component';
 import { Planet } from 'src/app/shared/models/planet';
 import { PlanetsService } from 'src/app/shared/services/planets.service';
 import { UrlParamService } from 'src/app/shared/services/urlparam.service';
@@ -9,68 +9,11 @@ import { UrlParamService } from 'src/app/shared/services/urlparam.service';
   templateUrl: './planets-list.component.html',
   styleUrls: ['./planets-list.component.css'],
 })
-export class PlanetsListComponent implements OnInit {
-  planets: Planet[];
-  previous: string;
-  hasPrevious: boolean = false;
-  next: string;
-  hasNext: boolean = false;
-  isLoading: boolean = true;
-
+export class PlanetsListComponent extends BaseListComponentComponent<Planet> {
   constructor(
-    private planetsService: PlanetsService,
-    private urlParamService: UrlParamService
-  ) {}
-
-  ngOnInit(): void {
-    this.getAllPlanets(null);
-  }
-
-  private getAllPlanets(query?: string) {
-    this.isLoading = true;
-    this.planetsService.getAll(query).subscribe(
-      (data) => {
-        data.results.map((d) => this.urlParamService.fillPlanetUrlParam(d));
-        this.planets = data.results;
-        if (data.previous !== null) {
-          this.hasPrevious = true;
-          this.previous = data.previous;
-        } else {
-          this.hasPrevious = false;
-          this.previous = null;
-        }
-        if (data.next !== null) {
-          this.hasNext = true;
-          this.next = data.next;
-        } else {
-          this.hasNext = false;
-          this.next = null;
-        }
-      },
-      (_) => {},
-      () => (this.isLoading = false)
-    );
-  }
-
-  loadNextPage() {
-    let nextCallPage = getPageQueryHelper(this.next);
-    window.scrollTo(0, 0);
-    this.getAllPlanets(nextCallPage);
-  }
-
-  loadPreviousPage() {
-    let previousCallPage = getPageQueryHelper(this.previous);
-    window.scrollTo(0, 0);
-    this.getAllPlanets(previousCallPage);
-  }
-
-  searchFilter(search) {
-    let query = `search=${search}`;
-    window.scrollTo(0, 0);
-    this.getAllPlanets(query);
-  }
-
-  clearSearchFilter() {
-    this.getAllPlanets();
+    planetsService: PlanetsService,
+    urlParamService: UrlParamService
+  ) {
+    super(planetsService, urlParamService);
   }
 }
